@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres:14.5-bullseye
+    container_name: db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+    networks:
+      - keycloakNetwork
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.1
+    container_name: keycloak
+    environment:
+      KC_DB: postgres
+      KC_DB_USERNAME: ${DATABASE_USER}
+      KC_DB_PASSWORD: ${DATABASE_PASSWORD}
+      KC_DB_SCHEMA: public
+      KC_DB_URL_DATABASE: ${DATABASE_NAME}
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_PORT: 5432
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    entrypoint: [ "/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm" ]
+    depends_on:
+      - postgres
+    ports:
+      - ${KEYCLOAK_PORT:-8080}:8080
+      - ${KEYCLOAK_PORT:-8443}:8443
+    volumes:
+      - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
+    networks:
+      - keycloakNetwork
+
+volumes:
+  postgres_data:
+
+networks:
+  keycloakNetwork:
+    external: true

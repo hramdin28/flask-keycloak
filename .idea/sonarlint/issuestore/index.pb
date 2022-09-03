@@ -1,0 +1,25 @@
+
+O
+app/main/controller/__init__.py,6/1/616596b5ea3d39b758627499aa18680e79742565
+7
+main.py,f/1/f1bdda93d9a278e358509d498e17d97764c1fb29
+E
+resources/docker/.env,d/e/decbca90967e44e334face8dbec51f08c6454b6c
+S
+#resources/docker/docker-compose.yml,3/3/33ce9869978cbcf3cdd759372647144348d62cad
+[
++resources/docker/keycloak/realm-export.json,b/f/bfbea527623cbe0be50282066ee7b936df8c27d6
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+Q
+!resources/requirements/common.txt,d/d/ddb056b03d03bee3530c3ea6866aeae7efe435f8
+G
+app/main/api/app_api.py,7/f/7fba6e255b00dee69cb514c831533506ab324289
+D
+app/main/__init__.py,8/4/84b8d49b14325f540d415f7314361124f04283f2
+?
+app/__init__.py,6/b/6b5a07a517e9a3845a279675e888c81b77b9d712
+H
+app/main/dto/auth_dto.py,9/7/97783dc2a7d9a94001ed54e9a656399aadc6538b
+U
+%resources/env/dev/client_secrets.json,f/2/f2a4592ccfbbbc53cdf2d9baaa316a6884b9e0f8
